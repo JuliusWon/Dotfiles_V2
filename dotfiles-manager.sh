@@ -18,7 +18,7 @@ then
 	cp -r ~/.config/rofi/ ~/Utilities/git-cloning/Dotfiles_V2/
 fi
 #kitty
-if [ $1 == 'qtile' ]
+if [ $1 == 'kitty' ]
 then
 	rm -rf ~/Utilities/git-cloning/Dotfiles_V2/kitty/
 	cp -r ~/.config/kitty/ ~/Utilities/git-cloning/Dotfiles_V2/
