@@ -1,3 +1,3 @@
 # Dotfiles_V2
-To install see [INSTALL.md](INSTALL.md)
+To install see [SETUP.md](SETUP.md)
 ![Discord](Screenshot.png)
