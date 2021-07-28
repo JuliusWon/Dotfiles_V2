@@ -11,6 +11,9 @@ file_manager = "dolphin"
 browser = "firefox"
 launcher = "rofi -show drun -config ~/.config/rofi/rofi-themes/OfficialThemes/nord.rasi"
 keys = [
+    #Media Control:
+    Key([mod], "a", lazy.spawn("amixer -q set Master 10%-"), desc="Volume down"),
+    Key([mod], "q", lazy.spawn("amixer -q set Master 10%+"), desc="Volume up"),
     # Switch between windows
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
@@ -39,7 +42,7 @@ keys = [
         desc="Grow window down"),
     Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
-
+    
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
@@ -84,10 +87,10 @@ for i in groups:
     ])
 
 layouts = [
-    layout.Columns(margin = 8, border_focus_stack='#d75f5f'),
-    layout.Max(margin = 8, border_focus_stack='#d75f5f'),
-    layout.Matrix(margin = 8, border_focus_stack='#d75f5f'),
-    layout.TreeTab(margin = 8, border_focus_stack='#d75f5f'),
+    layout.Columns(margin = 4, border_focus_stack='#d75f5f'),
+    layout.Max(margin = 4, border_focus_stack='#d75f5f'),
+    layout.Matrix(margin = 4, border_focus_stack='#d75f5f'),
+    layout.TreeTab(margin = 4, border_focus_stack='#d75f5f'),
 ]
 
 widget_defaults = dict(
