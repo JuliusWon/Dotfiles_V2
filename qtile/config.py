@@ -9,7 +9,7 @@ mod = "mod4"
 terminal = "kitty"
 file_manager = "dolphin"
 browser = "firefox"
-launcher = "rofi -show drun -config ~/.config/rofi/rofi-themes/OfficialThemes/nord.rasi"
+launcher = "rofi -show drun"
 keys = [
     #Media Control:
     Key([mod], "a", lazy.spawn("amixer -q set Master 10%-"), desc="Volume down"),
