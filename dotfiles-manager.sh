@@ -1,25 +1,27 @@
 #bin/bash
 #qtile
+CloningPath=~/utils/Dotfiles_V2/
+CloningPath=~/Utilities/git-cloning/Dotfiles_V2/
 if [ $1 == 'qtile' ]
 then
-	rm -rf ~/Utilities/git-cloning/Dotfiles_V2/qtile/
-	cp -r ~/.config/qtile ~/Utilities/git-cloning/Dotfiles_V2/
+	rm -rf $CloningPath/qtile/
+	cp -r ~/.config/qtile $CloningPath
 fi
 #neovim
 if [ $1 == 'nvim' ]
 then
-	rm -rf ~/Utilities/git-cloning/Dotfiles_V2/neovim/
-	cp -r ~/.config/nvim ~/Utilities/git-cloning/Dotfiles_V2/
+	rm -rf $CloningPath/neovim/
+	cp -r ~/.config/nvim $CloningPath
 fi
 #rofi
 if [ $1 == 'rofi' ]
 then
-	rm -rf ~/Utilities/git-cloning/Dotfiles_V2/rofi/
-	cp -r ~/.config/rofi/ ~/Utilities/git-cloning/Dotfiles_V2/
+	rm -rf $CloningPath/rofi/
+	cp -r ~/.config/rofi/ $CloningPath
 fi
 #kitty
 if [ $1 == 'kitty' ]
 then
-	rm -rf ~/Utilities/git-cloning/Dotfiles_V2/kitty/
-	cp -r ~/.config/kitty/ ~/Utilities/git-cloning/Dotfiles_V2/
+	rm -rf $CloningPath/kitty/
+	cp -r ~/.config/kitty/ $CloningPath
 fi
