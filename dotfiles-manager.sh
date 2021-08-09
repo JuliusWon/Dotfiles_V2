@@ -1,7 +1,7 @@
 #bin/bash
 #qtile
-CloningPath=~/utils/Dotfiles_V2/
-CloningPath=~/Utilities/git-cloning/Dotfiles_V2/
+CloningPath=~/utils/Dotfiles_V2
+# CloningPath=~/Utilities/git-cloning/Dotfiles_V2/
 if [ $1 == 'qtile' ]
 then
 	rm -rf $CloningPath/qtile/
@@ -10,7 +10,7 @@ fi
 #neovim
 if [ $1 == 'nvim' ]
 then
-	rm -rf $CloningPath/neovim/
+	rm -rf $CloningPath/nvim/
 	cp -r ~/.config/nvim $CloningPath
 fi
 #rofi

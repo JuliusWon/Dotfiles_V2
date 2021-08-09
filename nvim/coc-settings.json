@@ -1,7 +1,3 @@
 {
-		    "omnisharp.version": "v1.37.3",
-	        "omnisharp.trace.server": "information",
-		    "omnisharp.debug.server": true,
-			"coc.source.OmniSharp.enable" : true,
-			"coc.source.OmniSharp.triggerCharacters": ".",
+"pairs.enableCharacters":["(","{","[","'"]
 }
