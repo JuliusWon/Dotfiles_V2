@@ -11,7 +11,6 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 Step 3: Copy dotfiles to the right directory:
 ```bash
 git clone 'https://github.com/JuliusWon/Dotfiles_V2.git'
-cd .config/nvim/
 rm -rf ~/.config/nvim
 cp -r Dotfiles_V2/nvim .config/nvim	
 ```
@@ -32,8 +31,50 @@ git clone 'https://github.com/JuliusWon/Dotfiles_V2.git'
 ```
 Step 3: Copy files:
 ```bash
-cd .config/qtile/
 rm -rf ~/.config/qtile
 cp -r Dotfiles_V2/qtile .config/qtile
 ```
 Step 4: Recompile Qtile. On the default config the hotkey for this is Control+Super+R
+# Setup Rofi:
+Step 1: Install Rofi:
+```bash
+sudo pacman -S rofi
+```
+Step 2: Clone Repo:
+```bash
+git clone 'https://github.com/JuliusWon/Dotfiles_V2.git'
+```
+Step 3: Copy files:
+```bash
+rm -rf ~/.config/rofi
+cp -r Dotfiles_V2/rofi .config/rofi
+```
+# Setup Kitty:
+Step 1: Install kitty and fonts:
+```bash
+sudo pacman -S kitty
+sudo pacman -S ttc-iosevka
+```
+Step 2: Clone Repo:
+```bash
+git clone 'https://github.com/JuliusWon/Dotfiles_V2.git'
+```
+Step 3: Copy files:
+```bash
+rm -rf ~/.config/kitty
+cp -r Dotfiles_V2/kitty .config/kitty
+```
+# Setup Dunst:
+Step 1: Install Dunst:
+```bash
+sudo pacman -S dunst
+```
+Step 2: Clone Repo:
+```bash
+git clone 'https://github.com/JuliusWon/Dotfiles_V2.git'
+```
+Step 3: Copy files:
+```bash
+rm -rf ~/.config/dunst
+cp -r Dotfiles_V2/dunst .config/dunst
+```
