@@ -7,9 +7,10 @@ from libqtile.utils import guess_terminal
 
 mod = "mod4"
 terminal = "kitty"
-file_manager = "dolphin"
+file_manager = "thunar"
 browser = "firefox"
 launcher = "rofi -show drun"
+task_switcher = "rofi -show window"
 keys = [
     #Media Control:
     Key([mod], "a", lazy.spawn("amixer -q set Master 10%-"), desc="Volume down"),
@@ -56,6 +57,8 @@ keys = [
     Key([mod], "b", lazy.spawn(browser), desc="Launch browser"),
     #spawn rofi
     Key([mod], "p", lazy.spawn(launcher), desc="Launcher prompt"),
+    #spawn rofi window switcher
+    Key([mod], "o", lazy.spawn(task_switcher), desc="Task switcher"),
     #lock screen and suspend
     Key([mod], "c", lazy.spawn("betterlockscreen -s"), desc="Lock screen"),
 
@@ -87,17 +90,17 @@ for i in groups:
     ])
 
 layouts = [
-    layout.Columns(margin = 4, border_focus_stack='#d75f5f'),
+    layout.Columns(margin = 6, border_focus_stack='#d75f5f'),
     layout.Max(margin = 4, border_focus_stack='#d75f5f'),
-    layout.Matrix(margin = 4, border_focus_stack='#d75f5f'),
-    layout.TreeTab(margin = 4, border_focus_stack='#d75f5f'),
+    layout.Matrix(margin = 8, border_focus_stack='#d75f5f'),
+    # layout.TreeTab(margin = 4, border_focus_stack='#d75f5f'),
 ]
 
 widget_defaults = dict(
     font='iosevka',
     fontsize=12,
     padding=3,
-    background='#222222',
+    background='#24283b',
 )
 extension_defaults = widget_defaults.copy()
 
@@ -105,24 +108,32 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.TextBox("Battery: ", foreground="#d75f5f"),
-                widget.Battery(charge_char = 'charging', discharge_char = 'discharging', format = '{char} : {percent:2.0%}'),
-                widget.TextBox("Mode: ", foreground="#d75f5f"),
-                widget.CurrentLayout(),
-                widget.GroupBox(),
+                widget.TextBox(" "),
+                # widget.TextBox("Battery:", foreground="#FF9E64"),
+                # widget.Battery(charge_char = 'charging', discharge_char = 'discharging', format = '{char} : {percent:2.0%}', foreground="#FF9E64"),
+                widget.TextBox("Mode:", foreground="#F7768E"),
+                widget.CurrentLayout(foreground="#F7768E"),
+                widget.TextBox(" "),
+                widget.Volume(foreground="#FF9E64"),
+                widget.TextBox(" "),
+                widget.GroupBox(disable_drag = True,invert_mouse_wheel=True, active="#E0AF68",inactive="#444B6A"),
+                widget.TextBox(" "),
                 widget.Prompt(),
-                widget.WindowName(),
+                widget.WindowName(foreground="#7AA2F7"),
                 widget.Chord(
                     chords_colors={
                         'launch': ("#ff0000", "#ffffff"),
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
+                widget.TextBox("Press &lt;M-p&gt; for launcher", foreground="#ad8ee6"),
+                widget.TextBox(" "),
                 widget.Systray(),
+                widget.TextBox(" "),
                 widget.Clipboard(),
-                widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
-                widget.QuickExit(),
+                widget.Clock(format='%Y-%m-%d %a %I:%M %p',foreground="#9ECE6A"),
+                widget.TextBox(" "),
+                widget.QuickExit(foreground="#FF9E64"),
             ],
             24,
         ),
@@ -156,5 +167,5 @@ floating_layout = layout.Floating(float_rules=[
     Match(title='pinentry'),  # GPG key password entry
 ])
 auto_fullscreen = True
-focus_on_window_activation = "smart"
+focus_on_window_activation = "focus"
 wmname = "LG3D"
