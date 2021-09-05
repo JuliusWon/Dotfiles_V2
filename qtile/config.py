@@ -5,12 +5,20 @@ from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
+import os
+import subprocess
+
+# @hook.subscribe.startup_once
+
+# def autostart():
+    # home = os.path.expanduser('~/.config/qtile/autostart.sh')
+    # subprocess.call([home])
 mod = "mod4"
 terminal = "kitty"
-file_manager = "thunar"
+file_manager = "dolphin"
 browser = "firefox"
-launcher = "rofi -show drun"
-task_switcher = "rofi -show window"
+launcher = "rofi -show drun -no-default-config"
+task_switcher = "rofi -show window -no-default-config"
 keys = [
     #Media Control:
     Key([mod], "a", lazy.spawn("amixer -q set Master 10%-"), desc="Volume down"),
@@ -61,7 +69,9 @@ keys = [
     Key([mod], "o", lazy.spawn(task_switcher), desc="Task switcher"),
     #lock screen and suspend
     Key([mod], "c", lazy.spawn("betterlockscreen -s"), desc="Lock screen"),
-
+    
+    #power menu
+    Key([mod], "x", lazy.spawn("arcolinux-logout"), desc="Launches arcolinux powermenu"),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
@@ -100,10 +110,9 @@ widget_defaults = dict(
     font='iosevka',
     fontsize=12,
     padding=3,
-    background='#24283b',
+    background='#24283b.55',
 )
 extension_defaults = widget_defaults.copy()
-
 screens = [
     Screen(
         top=bar.Bar(
@@ -113,20 +122,23 @@ screens = [
                 # widget.Battery(charge_char = 'charging', discharge_char = 'discharging', format = '{char} : {percent:2.0%}', foreground="#FF9E64"),
                 widget.TextBox("Mode:", foreground="#F7768E"),
                 widget.CurrentLayout(foreground="#F7768E"),
-                widget.TextBox(" "),
+                widget.TextBox(" Volume:",foreground="#FF9E64"),
                 widget.Volume(foreground="#FF9E64"),
                 widget.TextBox(" "),
                 widget.GroupBox(disable_drag = True,invert_mouse_wheel=True, active="#E0AF68",inactive="#444B6A"),
                 widget.TextBox(" "),
                 widget.Prompt(),
                 widget.WindowName(foreground="#7AA2F7"),
+                # widget.TextBox("Launcher", mouse_callbacks = {"Button1": lazy.spawn("alacritty")}),
                 widget.Chord(
                     chords_colors={
                         'launch': ("#ff0000", "#ffffff"),
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.TextBox("Press &lt;M-p&gt; for launcher", foreground="#ad8ee6"),
+                widget.Notify(),
+                widget.TextBox("Press &lt;M-p&gt; for launcher  ", foreground="#ad8ee6"),
+                widget.Battery(foreground="#7AA2F7",format ='battery: {percent:2.0%}'),
                 widget.TextBox(" "),
                 widget.Systray(),
                 widget.TextBox(" "),
@@ -136,7 +148,10 @@ screens = [
                 widget.QuickExit(foreground="#FF9E64"),
             ],
             24,
+            margin = 5,
+            # opacity = 1,
         ),
+        bottom=bar.Gap(36), 
     ),
 ]
 
@@ -146,7 +161,7 @@ mouse = [
          start=lazy.window.get_position()),
     Drag([mod], "Button3", lazy.window.set_size_floating(),
          start=lazy.window.get_size()),
-    Click([mod], "Button2", lazy.window.bring_to_front())
+    Click([mod], "Button2", lazy.window.toggle_floating())
 ]
 
 dgroups_key_binder = None
