@@ -36,3 +36,10 @@ then
 	echo $CloningPath/dunst/
 	cp -r ~/.config/dunst/ $CloningPath
 fi
+#Firefox
+if [ $1 == 'firefox' ]
+then
+	rm -rf $CloningPath/Firefox/Chrome/
+	echo $CloningPath/Firefox/Chrome/
+	cp -r /home/julius/.mozilla/firefox/svbvp17k.default-release/chrome/ $CloningPath/Firefox/
+fi

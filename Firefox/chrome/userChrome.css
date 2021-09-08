@@ -1,0 +1,44 @@
+ 
+window, #main-window, #toolbar-menubar, #TabsToolbar, #PersonalToolbar, #navigator-toolbox,#sidebar-box{
+
+background-color: rgba(41,47,52,0.3) !important;
+
+-moz-appearance: none !important;
+
+background-image: none !important;
+
+}
+
+
+window, #nav-bar{
+
+background-color: rgba(33,37,41,.9) !important;
+
+-moz-appearance: none !important;
+
+background-image: none !important;
+
+}
+
+
+.tab-background[selected="true"] {
+
+background: rgba(33,37,41,0.7) !important;
+
+-moz-appearance: none !important;
+
+background-image: none !important;
+
+}
+.tab-background[selected="false"] {
+
+background: rgba(33,37,41,0.6) !important;
+
+-moz-appearance: none !important;
+
+background-image: none !important;
+
+}
+#navigator-toolbox {
+
+--tabs-border-color:rgba(100,100,100,0) !important;}
