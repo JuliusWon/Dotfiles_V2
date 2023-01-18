@@ -13,16 +13,19 @@ import subprocess
 # def autostart():
     # home = os.path.expanduser('~/.config/qtile/autostart.sh')
     # subprocess.call([home])
+autostartscriptpath = '~/.config/qtile/autostart.sh'
 mod = "mod4"
 terminal = "kitty"
-file_manager = "dolphin"
+file_manager = "nautilus"
 browser = "firefox"
 launcher = "rofi -show drun -no-default-config"
+launcher = "rofi -show drun -config ~/Downloads/dotfiles-main/rofi/config.rasi"
 task_switcher = "rofi -show window -no-default-config"
 keys = [
     #Media Control:
     Key([mod], "a", lazy.spawn("amixer -q set Master 10%-"), desc="Volume down"),
     Key([mod], "q", lazy.spawn("amixer -q set Master 10%+"), desc="Volume up"),
+    # Key([mod], "~", lazy.spawn("./"+autostartscriptpath), desc="Volume up"),
     # Switch between windows
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
@@ -115,7 +118,7 @@ widget_defaults = dict(
 extension_defaults = widget_defaults.copy()
 screens = [
     Screen(
-        top=bar.Bar(
+        bottom=bar.Bar(
             [
                 widget.TextBox(" "),
                 # widget.TextBox("Battery:", foreground="#FF9E64"),
@@ -136,9 +139,8 @@ screens = [
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.Notify(),
                 widget.TextBox("Press &lt;M-p&gt; for launcher  ", foreground="#ad8ee6"),
-                widget.Battery(foreground="#7AA2F7",format ='battery: {percent:2.0%}'),
+                widget.Battery(foreground="#7AA2F7",format ='Battery: {percent:2.0%}'),
                 widget.TextBox(" "),
                 widget.Systray(),
                 widget.TextBox(" "),
@@ -147,11 +149,9 @@ screens = [
                 widget.TextBox(" "),
                 widget.QuickExit(foreground="#FF9E64"),
             ],
-            24,
+            40,
             margin = 5,
-            # opacity = 1,
         ),
-        bottom=bar.Gap(36), 
     ),
 ]
 
